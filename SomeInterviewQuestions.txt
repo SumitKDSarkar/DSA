@@ -1,0 +1,78 @@
+const arr = [1, 2, [3, [4, 5, [6, 7]]], 8, 9];
+
+function flattenArray(arr) {
+  const flattened = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (Array.isArray(arr[i])) {
+      flattened.push(...flattenArray(arr[i]));
+    } else {
+      flattened.push(arr[i]);
+    }
+  }
+
+  return flattened;
+}
+
+const result = flattenArray(arr);
+console.log(result); // [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+class Calculator {
+  constructor() {
+    this.total = 0;
+  }
+  
+  add(num) {
+    this.total += num;
+    return this;
+  }
+  
+  sub(num) {
+    this.total -= num;
+    return this;
+  }
+  
+  mul(num) {
+    this.total *= num;
+    return this;
+  }
+}
+
+let calculate = new Calculator();
+let x = calculate.add(10).sub(5).mul(2);
+
+console.log(x.total);
+
+
+
+
+// duplicate array :-
+  
+  let arr = [1,1,1,12,3,4,4,5,7];
+let uniqueArr = [];
+
+for (let num of arr) {
+  if (!uniqueArr.includes(num)) {
+    uniqueArr.push(num);
+  }
+}
+
+console.log(uniqueArr); // Output: [1, 12, 3, 4, 5, 7]
+
+// Another duplicate array find:--
+
+let arr = [1,1,1,12,3,4,4,5,7];
+
+for (let i = 0; i < arr.length; i++) {
+  let current = arr[i];
+  for (let j = i + 1; j < arr.length; j++) {
+    if (arr[j] === current) {
+      arr.splice(j, 1); // Remove the duplicate element
+      j--; // Adjust the index after the splice
+    }
+  }
+}
+
+console.log(arr); // Output: [1, 12, 3, 4, 5, 7]
+
